@@ -1,8 +1,13 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import { SPACE_X_MISSIONS } from './api/missions';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
+  const { loading, error, data } = useQuery(SPACE_X_MISSIONS, {});
+  console.log(data);
+
   return (
     <div className="App">
       <header className="App-header">
