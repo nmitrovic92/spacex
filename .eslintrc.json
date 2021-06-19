@@ -8,11 +8,7 @@
     "prettier",
     "prettier/prettier"
   ],
-  "plugins": [
-    "react",
-    "@typescript-eslint",
-    "jest"
-  ],
+  "plugins": ["react", "@typescript-eslint", "jest"],
   "env": {
     "browser": true,
     "es6": true,
