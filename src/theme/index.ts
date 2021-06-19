@@ -1,12 +1,11 @@
 import { createMuiTheme } from '@material-ui/core';
-import { PaletteColor } from './pallete';
+import { PaletteColor } from '../types/PalleteColorType';
 
 const primary: PaletteColor = {
-  main: '#5569ff',
-  contrastText: '#223354'
+  main: '#688EFF'
 };
 const secondary: PaletteColor = {
-  main: '#ffa319'
+  main: '#171c24'
 };
 
 export const theme = createMuiTheme({
@@ -14,7 +13,8 @@ export const theme = createMuiTheme({
     primary,
     secondary,
     text: {
-      primary: 'white'
+      primary: '#fff',
+      secondary: '#919EAB'
     }
   }
 });

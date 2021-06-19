@@ -3,6 +3,7 @@ import { gql } from '@apollo/client';
 export const SPACE_X_LAUNCHES = gql`
   query GetLaunches {
     launches(limit: 10) {
+      id
       details
       mission_name
       rocket {
