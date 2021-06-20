@@ -9,6 +9,22 @@ const secondary: PaletteColor = {
 };
 
 export const theme = createMuiTheme({
+  overrides: {
+    MuiOutlinedInput: {
+      root: {
+        margin: '50px 0',
+        borderRadius: '2rem'
+      },
+      notchedOutline: {
+        borderColor: '#919EAB'
+      }
+    },
+    MuiInputBase: {
+      input: {
+        width: '400px'
+      }
+    }
+  },
   palette: {
     primary,
     secondary,

@@ -10,7 +10,6 @@ import {
 } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { Link } from 'react-router-dom';
-import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
 import { useLaunchImage } from '../../../hooks/useLaunchImage';
 import { LaunchType } from '../../../types/LaunchType';
 import { useStyles } from '../LaunchOverviewMuiStyles';
