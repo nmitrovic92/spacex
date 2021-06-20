@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Grid,
   Card,
@@ -7,25 +8,23 @@ import {
   CardActions,
   Button,
   CardMedia,
-  Icon
+  Chip
 } from '@material-ui/core';
 import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
 import classNames from 'classnames';
-import { LaunchType } from '../../types/LaunchType';
-import SpaceXPlaceholder from '../../assets/images/space-x-placeholder.jpeg';
-import { useStyles } from './LaunchInfoMuiStyles';
-import styles from './LaunchInfo.module.scss';
+import { LaunchType } from '../../../types/LaunchType';
+import SpaceXPlaceholder from '../../../assets/images/space-x-placeholder.jpeg';
+import { useStyles } from '../LaunchOverviewMuiStyles';
+import { useLaunchImage } from '../../../hooks/useLaunchImage';
+import styles from './LaunchOverview.module.scss';
 
 interface LaunchInfoProps {
   launch: LaunchType;
 }
 
 const LaunchInfo: FC<LaunchInfoProps> = ({ launch }) => {
-  // console.log(launch);
   const classes = useStyles();
-  const launchImages = launch?.links.flickr_images;
-  const { length: launchImagesCount } = launchImages;
-  const [firstLaunchImage] = launchImages;
+  const { launchImagesCount, firstLaunchImage } = useLaunchImage(launch);
 
   const renderLaunchDetails = (): string => {
     if (launch.details) {
@@ -48,8 +47,13 @@ const LaunchInfo: FC<LaunchInfoProps> = ({ launch }) => {
               image={SpaceXPlaceholder}
             />
           )}
+          <Chip
+            className={classes.launchDate}
+            label={new Date(launch.launch_date_utc).toLocaleDateString()}
+            variant="outlined"
+            color="primary"
+          />
           <Typography
-            className={classes.missionName}
             variant="h6"
             component="h6"
             color="textPrimary"
@@ -66,15 +70,17 @@ const LaunchInfo: FC<LaunchInfoProps> = ({ launch }) => {
             {renderLaunchDetails()}
           </Typography>
         </CardContent>
-        <CardActions>
-          <Button
-            size="medium"
-            variant="contained"
-            color="primary"
-            endIcon={<ArrowForwardOutlinedIcon />}
-          >
-            Learn More
-          </Button>
+        <CardActions className={classes.cardActions}>
+          <Link to={`/launches/${launch.id}/rocket`}>
+            <Button
+              size="medium"
+              variant="contained"
+              color="primary"
+              endIcon={<ArrowForwardOutlinedIcon />}
+            >
+              Learn More
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </Grid>

@@ -15,6 +15,21 @@ interface LaunchLinks {
 interface LaunchRocket {
   rocket_name: string;
   rocket_type: string;
+  rocket: {
+    active: boolean;
+    boosters: number;
+    company: string;
+    cost_per_launch: number;
+    country: string;
+    description: string;
+    first_flight: Date;
+    id: string;
+    name: string;
+    stages: number;
+    success_rate_pct: number;
+    type: string;
+    wikipedia: string;
+  };
 }
 
 export interface LaunchType {

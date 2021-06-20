@@ -1,25 +1,18 @@
 import React, { FC } from 'react';
 import { useQuery } from '@apollo/client';
-import { Container, Grid, makeStyles, Typography } from '@material-ui/core';
-import { SPACE_X_LAUNCHES } from '../api/launches';
-import { LaunchType } from '../types/LaunchType';
-import LaunchInfo from '../components/LaunchInfo/LaunchInfo';
+import { Container, Grid, Typography } from '@material-ui/core';
+import { GET_SPACE_X_LAUNCHES } from '../../api/launches';
+import { LaunchType } from '../../types/LaunchType';
 import styles from './LaunchesPage.module.scss';
-
-const useStyles = makeStyles({
-  launches: {
-    marginTop: '40px'
-  }
-});
+import LaunchInfo from '../../components/Launch/LaunchOverview/LaunchOverview';
 
 const LaunchesPage: FC = () => {
-  const classes = useStyles();
-  const { loading, data: { launches = [] as LaunchType[] } = {} } =
-    useQuery<{ launches: LaunchType[] }>(SPACE_X_LAUNCHES);
+  const { data: { launches = [] as LaunchType[] } = {} } =
+    useQuery<{ launches: LaunchType[] }>(GET_SPACE_X_LAUNCHES);
   console.log(launches);
 
   return (
-    <Container maxWidth="lg" className={classes.launches}>
+    <Container maxWidth="lg">
       <Typography variant="h4" component="h4" color="textPrimary">
         Welcome to <span className={styles.launchesSpace}>Space X Land!</span>
       </Typography>

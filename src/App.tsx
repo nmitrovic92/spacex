@@ -6,7 +6,8 @@ import {
   Switch
 } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
-import LaunchesPage from './pages/LaunchesPage';
+import LaunchesPage from './pages/LaunchesPage/LaunchesPage';
+import LaunchDetailsPage from './pages/LaunchDetailsPage/LaunchDetailsPage';
 import { theme } from './theme';
 import './App.scss';
 
@@ -18,8 +19,11 @@ function App() {
           <Route exact path="/">
             <Redirect to="/launches" />
           </Route>
-          <Route path="/launches">
+          <Route exact path="/launches">
             <LaunchesPage />
+          </Route>
+          <Route path="/launches/:id/rocket">
+            <LaunchDetailsPage />
           </Route>
         </Switch>
       </Router>
