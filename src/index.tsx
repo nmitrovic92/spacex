@@ -8,7 +8,20 @@ import reportWebVitals from './reportWebVitals';
 
 const client = new ApolloClient({
   uri: 'https://api.spacex.land/graphql/',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          feed: {
+            keyArgs: false,
+            merge(existing = [], incoming) {
+              return [...existing, ...incoming];
+            }
+          }
+        }
+      }
+    }
+  })
 });
 
 ReactDOM.render(

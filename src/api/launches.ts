@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const GET_SPACE_X_LAUNCHES = gql`
-  query GetLaunches($missionName: String) {
-    launches(limit: 10, find: { mission_name: $missionName }) {
+  query GetLaunches($offset: Int, $missionName: String) {
+    launches(limit: 10, offset: $offset, find: { mission_name: $missionName }) {
       id
       details
       mission_name
